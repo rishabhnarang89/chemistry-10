@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-cream text-ink antialiased font-sans;
+}
+
+h1, h2, h3, .font-display {
+  font-family: "Baloo 2", ui-rounded, sans-serif;
+}
+
+::selection {
+  @apply bg-lav-200;
+}
+
+/* Gentle scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-lav-200 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-lav-300;
+}
+
+/* Conveyor belt stripes animation (Chapter 3) */
+.conveyor-belt {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #e2d8f7 0px,
+    #e2d8f7 28px,
+    #f1ecfb 28px,
+    #f1ecfb 56px
+  );
+}
+
+/* Respect reduced motion preferences everywhere */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
