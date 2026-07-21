@@ -6,6 +6,7 @@ import RecipeBalancer from "@/components/RecipeBalancer";
 import LitmusLab from "@/components/LitmusLab";
 import MaterialSorter from "@/components/MaterialSorter";
 import CarbonClub from "@/components/CarbonClub";
+import ElementAcademy from "@/components/ElementAcademy";
 import Mascot from "@/components/Mascot";
 import ProgressRing from "@/components/ProgressRing";
 import SoundToggle from "@/components/SoundToggle";
@@ -52,6 +53,17 @@ const CHAPTERS = [
     colorDeep: "#7554B8",
     component: CarbonClub,
   },
+  {
+    id: "elements",
+    number: 5,
+    label: "Bonus",
+    title: "Element Academy",
+    subtitle: "Periodic Table · Masses & Valencies",
+    colorMain: "#F7D96B",
+    colorSoft: "#FFF8DC",
+    colorDeep: "#B8892B",
+    component: ElementAcademy,
+  },
 ];
 
 const WORLD_BG = {
@@ -59,6 +71,7 @@ const WORLD_BG = {
   litmus: "from-cream to-sky-100/40",
   sorter: "from-cream to-mint-100/40",
   carbon: "from-cream to-lav-100/40",
+  elements: "from-cream to-butter-100/50",
 };
 
 export default function Home() {
@@ -68,6 +81,7 @@ export default function Home() {
     litmus: 0,
     sorter: 0,
     carbon: 0,
+    elements: 0,
   });
 
   const active = CHAPTERS.find((c) => c.id === activeId);
@@ -134,7 +148,7 @@ export default function Home() {
                 </ProgressRing>
                 <span className="hidden min-w-0 flex-col md:flex">
                   <span className="block text-[11px] font-bold uppercase tracking-wide text-ink/40">
-                    Chapter {ch.number}
+                    {ch.label || `Chapter ${ch.number}`}
                   </span>
                   <span
                     className={`block truncate text-sm font-bold leading-tight ${
@@ -193,7 +207,7 @@ export default function Home() {
                     {active.title}
                   </h2>
                   <p className="text-sm font-bold text-ink/50">
-                    Chapter {active.number} · {active.subtitle}
+                    {active.label || `Chapter ${active.number}`} · {active.subtitle}
                   </p>
                 </div>
               </div>
